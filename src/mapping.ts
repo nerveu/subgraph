@@ -56,7 +56,8 @@ export function handleBetCreated(event: BetCreated): void {
   let userBet = new UserBet(event.params.initiator.toHex() + "-" + event.params.betID.toHex())
   log.info('New UserBet entity created: {} - {}', [event.params.initiator.toHex(), event.params.betID.toHex()])
   userBet.userAddress = event.params.initiator 
-  userBet.betData = event.params.betID.toHex() 
+  userBet.betData = event.params.betID.toHex()
+  userBet.userStake = BigInt.fromI32(0)
   userBet.save()
 
   // UserAchievements Entity
