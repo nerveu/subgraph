@@ -281,6 +281,7 @@ export function handleTaskAdded(event: TaskAdded): void {
   task.entranceAmount = event.params.amount
   task.description = event.params.description
   task.endTask = event.params.endTask
+  task.participants = BigInt.fromI32(1)
   task.hashtag1 = event.params.hashtag1
   task.hashtag2 = event.params.hashtag2
   task.hashtag3 = event.params.hashtag3
