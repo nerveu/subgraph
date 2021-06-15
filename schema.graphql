@@ -55,7 +55,7 @@ type Bet @entity {
 type UserBet @entity {
   id: ID!
   userAddress: Bytes!
-  userStake: BigInt
+  userStake: BigInt!
   redeemed: Boolean
   joinedA: Boolean
   betData: Bet
@@ -81,7 +81,7 @@ type UserDashStats @entity {
   twitch: String
   tribute: BigInt
   profit: BigInt
-  blacklist: [Bytes]
+  blacklist: [Bytes!]
 }
 
 type UserAchievements @entity {
