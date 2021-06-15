@@ -196,12 +196,6 @@ export function handleBetRedeemed(event: BetRedeemed): void {
   // Bet Entity
   let bet = Bet.load(event.params.betID.toHex())
 
-  // UserBet Entity
-  let userBet = UserBet.load(event.params.participant.toHex() + "-" + event.params.betID.toHex())
-  userBet.redeemed = true
-  userBet.userStake = BigInt.fromI32(0)
-  userBet.save()
-
   // UserFavStats Entity
   let userFavStatsId = event.params.participant.toHex()
   let userFavStats = UserFavStats.load(userFavStatsId)
@@ -213,6 +207,12 @@ export function handleBetRedeemed(event: BetRedeemed): void {
   userFavStats.betBalance = userFavStats.betBalance.plus(event.params.profit)
   userFavStats.betBalance = userFavStats.betBalance.plus(userBet.userStake)
   userFavStats.save()
+  
+  // UserBet Entity
+  let userBet = UserBet.load(event.params.participant.toHex() + "-" + event.params.betID.toHex())
+  userBet.redeemed = true
+  userBet.userStake = BigInt.fromI32(0)
+  userBet.save()
 
   // GlobalStats Entity
   let globalStatsId = "1"
