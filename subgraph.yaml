@@ -1,0 +1,63 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: NerveGlobal
+    network: ropsten
+    source:
+      address: "0x83f74481e0589eC83d294CD785c4559158C9996E"
+      abi: NerveGlobal
+      startBlock: 10438671 
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Task
+        - UserTask
+        - Bet
+        - UserBet
+        - UserFavStats
+        - UserDashStats
+        - UserAchievements
+        - GlobalStats
+      abis:
+        - name: NerveGlobal
+          file: ./abis/NerveGlobal.json
+      eventHandlers:
+        - event: BetBailout(indexed address,indexed uint256,uint256)
+          handler: handleBetBailout
+        - event: BetClosed(indexed address,indexed uint256)
+          handler: handleBetClosed
+        - event: BetCreated(indexed address,indexed uint256,string,uint256,string,string,string,string,string,string)
+          handler: handleBetCreated
+        - event: BetFinished(indexed address,indexed uint256,bool,bool,bool)
+          handler: handleBetFinished
+        - event: BetJoined(indexed address,indexed uint256,uint256,bool)
+          handler: handleBetJoined
+        - event: BetProved(indexed uint256,string)
+          handler: handleBetProved
+        - event: BetRedeemed(indexed address,indexed uint256,uint256)
+          handler: handleBetRedeemed
+        - event: DisplayAchievementChanged(indexed address,string)
+          handler: handleDisplayAchievementChanged
+        - event: NameRegistered(indexed address,bytes32)
+          handler: handleNameRegistered
+        - event: RecipientRedeemed(indexed address,indexed uint256,uint256)
+          handler: handleRecipientRedeemed
+        - event: SocialRegistered(indexed address,bytes32,uint256)
+          handler: handleSocialRegistered
+        - event: TaskAdded(indexed address,indexed uint256,indexed address,uint256,string,uint256,string,string,string,string)
+          handler: handleTaskAdded
+        - event: TaskJoined(indexed address,indexed uint256,uint256)
+          handler: handleTaskJoined
+        - event: TaskProved(indexed uint256,string)
+          handler: handleTaskProved
+        - event: UserBlacklisted(indexed address,address)
+          handler: handleUserBlacklisted
+        - event: UserRedeemed(indexed address,indexed uint256,uint256)
+          handler: handleUserRedeemed
+        - event: Voted(indexed address,indexed uint256,bool,bool)
+          handler: handleVoted
+      file: ./src/mapping.ts
