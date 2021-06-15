@@ -6,9 +6,9 @@ dataSources:
     name: NerveGlobal
     network: ropsten
     source:
-      address: "0x83f74481e0589eC83d294CD785c4559158C9996E"
+      address: "0xefAF2Fa34928576d127E82054a1BF92CdD5a15a5"
       abi: NerveGlobal
-      startBlock: 10438671 
+      startBlock: 10441829
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4

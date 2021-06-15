@@ -13,7 +13,6 @@ type Task @entity {
   executed: Boolean
   finished: Boolean
   canceled: Boolean
-  chainID: BigInt!
   hashtag1: String
   hashtag2: String
   hashtag3: String 
@@ -46,7 +45,6 @@ type Bet @entity {
   winnerPartyA: Boolean
   draw: Boolean
   failed: Boolean
-  chainID: BigInt!
   hashtag1: String
   hashtag2: String
   hashtag3: String 
@@ -67,7 +65,7 @@ type UserFavStats @entity {
   id: ID!
   negativeVotes: BigInt
   positiveVotes: BigInt
-  betBalance: BigInt!
+  betBalance: BigInt
   betsWon: BigInt
   betsLost: BigInt
 }
