@@ -46,7 +46,6 @@ export function handleBetCreated(event: BetCreated): void {
   bet.textA = event.params.yesText 
   bet.textB = event.params.noText 
   bet.endBet = event.params.endBet 
-  //bet.chainID = event.params.  //missing id ???
   bet.hashtag1 = event.params.hashtag1 
   bet.hashtag2 = event.params.hashtag2 
   bet.hashtag3 = event.params.hashtag3 
@@ -279,7 +278,6 @@ export function handleTaskAdded(event: TaskAdded): void {
   task.entranceAmount = event.params.amount
   task.description = event.params.description
   task.endTask = event.params.endTask
-  //task.chainID = event.params.
   task.hashtag1 = event.params.hashtag1
   task.hashtag2 = event.params.hashtag2
   task.hashtag3 = event.params.hashtag3
