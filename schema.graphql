@@ -29,6 +29,15 @@ type UserTask @entity {
   taskData: Task
 }
 
+type UserTask2 @entity {
+  id: ID!
+  userAddress: Bytes!
+  userStake: BigInt!
+  voted: Boolean
+  vote: Boolean
+  taskData: Task
+}
+
 type Bet @entity {
   id: ID!
   initiatorAddress: Bytes!
