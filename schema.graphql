@@ -81,37 +81,37 @@ type UserFavStats @entity {
 
 type UserDashStats @entity {
   id: ID!
-  userName: String
-  displayAchievement: String
-  youtube: String
-  twitter: String
-  instagram: String
-  tiktok: String
-  twitch: String
-  tribute: BigInt
-  profit: BigInt
-  blacklist: [Bytes!]
+  userName: String!
+  displayAchievement: String!
+  youtube: String!
+  twitter: String!
+  instagram: String!
+  tiktok: String!
+  twitch: String!
+  tribute: BigInt!
+  profit: BigInt!
+  blacklist: [Bytes!]!
 }
 
 type UserAchievements @entity {
   id: ID!
-  tasksCreated: BigInt
-  tasksJoined: BigInt
-  tasksVoted: BigInt
+  tasksCreated: BigInt!
+  tasksJoined: BigInt!
+  tasksVoted: BigInt!
   betsCreated: BigInt!
-  betsJoined: BigInt
-  betsFinished: BigInt
-  accountCreation: BigInt
-  seasonOneRank: BigInt
-  seasonTwoRank: BigInt
-  seasonThreeRank: BigInt
+  betsJoined: BigInt!
+  betsFinished: BigInt!
+  accountCreation: BigInt!
+  seasonOneRank: BigInt!
+  seasonTwoRank: BigInt!
+  seasonThreeRank: BigInt!
 }
 
 type GlobalStats @entity {
   id: ID!
-  taskProfits: BigInt
+  taskProfits: BigInt!
   users: BigInt!
-  taskCount: BigInt
-  betProfit: BigInt
-  betCount: BigInt
+  taskCount: BigInt!
+  betProfit: BigInt!
+  betCount: BigInt!
 }
