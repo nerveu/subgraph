@@ -382,7 +382,7 @@ export function handleTaskJoined(event: TaskJoined): void {
     globalStats.save()
   }
   userAchievements.tasksJoined = userAchievements.tasksJoined.plus(BigInt.fromI32(1))
-  userAchievemets.save()                                                                  //hier
+  userAchievements.save()                                                                  //hier
 }
 
   /******************************************/
