@@ -72,6 +72,13 @@ function initializeUserAchievements (id: string): void {
   userAchievements.seasonTwoRank = BigInt.fromI32(0)
   userAchievements.seasonThreeRank = BigInt.fromI32(0)
   
+  let globalStatsId = "1"
+  let globalStats = GlobalStats.load(globalStatsId)
+  if(globalStats == null) {
+    initializeGlobalStats(globalStatsId)
+  }
+  globalStats.users = globalStats.users.plus(BigInt.fromI32(1))
+  globalStats.save()
 }
 
 function initializeGlobalStats (id: string): void {
@@ -118,15 +125,6 @@ export function handleBetCreated(event: BetCreated): void {
   if(userAchievements == null) {
     initializeUserAchievements(userAchievementsid)
     log.info('New UserAchievements entity created: {}', [event.params.initiator.toHex()])
-
-    // GlobalStats Entity
-    let globalStatsId = "1"
-    let globalStats = GlobalStats.load(globalStatsId)
-    if(globalStats == null) {
-      initializeGlobalStats(globalStatsId)
-    }
-    globalStats.users = globalStats.users.plus(BigInt.fromI32(1))
-    globalStats.save()
   }
   userAchievements.betsCreated = userAchievements.betsCreated.plus(BigInt.fromI32(1)) 
   userAchievements.save()
@@ -183,27 +181,9 @@ export function handleBetJoined(event: BetJoined): void {
   if(userAchievements == null) {
     initializeUserAchievements(userAchievementsId)
     log.info('New UserAchievement entity created: {}', [event.params.participant.toHex()])
-
-    // GlobalStats Entity
-    let globalStatsId = "1"
-    let globalStats = GlobalStats.load(globalStatsId)
-    if(globalStats == null) {
-      initializeGlobalStats(globalStatsId)
-    }
-    globalStats.users = globalStats.users.plus(BigInt.fromI32(1))
-    globalStats.save()
   }
   userAchievements.betsJoined = userAchievements.betsJoined.plus(BigInt.fromI32(1))
   userAchievements.save()
-
-  // GlobalStats Entity
-  let globalStatsId = "1"
-  let globalStats = GlobalStats.load(globalStatsId)
-  if(globalStats == null) {
-    initializeGlobalStats(globalStatsId)
-  }
-  globalStats.users = globalStats.users.plus(BigInt.fromI32(1)) 
-  globalStats.save()
 }
 
   /******************************************/
@@ -352,15 +332,6 @@ export function handleTaskAdded(event: TaskAdded): void {
   if(userAchievements == null) {
     initializeUserAchievements(userAchievementsId)
     log.info('New UserAchievements entity created: {}', [event.params.initiator.toHex()])
-    
-    // GlobalStats Entity
-    let globalStatsId = "1"
-    let globalStats = GlobalStats.load(globalStatsId)
-    if(globalStats == null) {
-      initializeGlobalStats(globalStatsId)
-    }
-    globalStats.users = globalStats.users.plus(BigInt.fromI32(1))
-    globalStats.save()
   }
   userAchievements.tasksCreated = userAchievements.tasksCreated.plus(BigInt.fromI32(1))
   userAchievements.save()                                                                   //hier
@@ -411,15 +382,6 @@ export function handleTaskJoined(event: TaskJoined): void {
   if(userAchievements == null) {
     initializeUserAchievements(userAchievementsId)
     log.info('New UserAchievements entity created: {}', [event.params.participant.toHex()])
-    
-    // GlobalStats Entity
-    let globalStatsId = "1"
-    let globalStats = GlobalStats.load(globalStatsId)
-    if(globalStats == null) {
-      initializeGlobalStats(globalStatsId)
-    }
-    globalStats.users = globalStats.users.plus(BigInt.fromI32(1))
-    globalStats.save()
   }
   userAchievements.tasksJoined = userAchievements.tasksJoined.plus(BigInt.fromI32(1))
   userAchievements.save()                                                                  //hier
