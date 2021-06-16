@@ -37,7 +37,7 @@ import {
 
 function initializeUserFavStats (id: string): void {
   let userFavStats = new UserFavStats(id)
-  userFavStats.negativeVotes = new UserFavStats(id)
+  userFavStats.negativeVotes = BigInt.fromI32(0)
   userFavStats.positiveVotes = BigInt.fromI32(0)
   userFavStats.betBalance = BigInt.fromI32(0)
   userFavStats.betsWon = BigInt.fromI32(0)
@@ -289,8 +289,8 @@ export function handleBetBailout(event: BetBailout): void {
   userBet.save()
 
   // UserFavStats Entity
-  let id = event.params.participant.toHex()
-  let userFavStats = UserFavStats.load(id)
+  let userFavStatsId = event.params.participant.toHex()
+  let userFavStats = UserFavStats.load(userFavStatsId)
   if(userFavStats == null) {
     initializeUserFavStats(userFavStatsId)
     log.info('New UserFavStats entity created: {}', [event.params.participant.toHex()])
@@ -448,8 +448,8 @@ export function handleVoted(event: Voted): void {
   userTask.save()
 
   // UserFavStats Entity
-  let id = event.params.participant.toHex()
-  let userFavStats = UserFavStats.load(id)
+  let userFavStatsId = event.params.participant.toHex()
+  let userFavStats = UserFavStats.load(userFavStatsId)
   if(userFavStats == null) {
     initializeUserFavStats(userFavStatsId)
     log.info('New UserFavStats entity created: {}', [event.params.participant.toHex()])
