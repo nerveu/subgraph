@@ -36,7 +36,7 @@ import {
   /******************************************/
 
 function initializeUserFavStats (id: string): void {
-  userFavStats = new UserFavStats(id)
+  let userFavStats = new UserFavStats(id)
   userFavStats.negativeVotes = new UserFavStats(id)
   userFavStats.positiveVotes = BigInt.fromI32(0)
   userFavStats.betBalance = BigInt.fromI32(0)
@@ -46,7 +46,7 @@ function initializeUserFavStats (id: string): void {
 }
 
 function initializeUserDashStats (id: string): void {
-  userDashStats = new UserDashStats(id)
+  let userDashStats = new UserDashStats(id)
   userDashStats.userName = "Unknown"
   userDashStats.displayAchievement = "None"
   userDashStats.youtube = "None"
@@ -60,7 +60,7 @@ function initializeUserDashStats (id: string): void {
 }
 
 function initializeUserAchievements (id: string): void {
-  userAchievements = new UserAchievements(id)
+  let userAchievements = new UserAchievements(id)
   userAchievements.tasksCreated = BigInt.fromI32(0)
   userAchievements.tasksJoined = BigInt.fromI32(0)
   userAchievements.tasksVoted = BigInt.fromI32(0)
@@ -75,7 +75,7 @@ function initializeUserAchievements (id: string): void {
 }
 
 function initializeGlobalStats (id: string): void {
-  globalStats = new GlobalStats(id)
+  let globalStats = new GlobalStats(id)
   globalStats.taskProfits = BigInt.fromI32(0)
   globalStats.users = BigInt.fromI32(0)
   globalStats.taskCount = BigInt.fromI32(0)
