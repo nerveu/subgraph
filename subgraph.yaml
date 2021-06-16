@@ -14,15 +14,7 @@ dataSources:
       apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
-        - Task
-        - UserTask
-        - UserTask2
-        - Bet
-        - UserBet
-        - UserFavStats
-        - UserDashStats
         - UserAchievements
-        - GlobalStats
       abis:
         - name: NerveGlobal
           file: ./abis/NerveGlobal.json
