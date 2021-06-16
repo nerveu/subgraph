@@ -20,21 +20,14 @@ import {
   Voted
 } from "../generated/NerveGlobal/NerveGlobal"
 import { 
-  Task, 
-  UserTask,
-  Bet,
-  UserBet,
-  UserFavStats,
-  UserDashStats,
   UserAchievements,
-  GlobalStats
 } from "../generated/schema"
 
 
   /******************************************/
   /*             Initialization             */
   /******************************************/
-
+/*
 function initializeUserFavStats (id: string): void {
   let userFavStats = new UserFavStats(id)
   userFavStats.negativeVotes = BigInt.fromI32(0)
@@ -58,10 +51,13 @@ function initializeUserDashStats (id: string): void {
   userDashStats.profit = BigInt.fromI32(0)
   userDashStats.blacklist = []
 }
-
+*/
 function initializeUserAchievements (id: string): void {
   let userAchievements = new UserAchievements(id)
   userAchievements.tasksCreated = BigInt.fromI32(0)
+}
+
+/*
   userAchievements.tasksJoined = BigInt.fromI32(0)
   userAchievements.tasksVoted = BigInt.fromI32(0)
   userAchievements.betsCreated = BigInt.fromI32(0)
@@ -93,7 +89,7 @@ function initializeGlobalStats (id: string): void {
   /******************************************/
   /*               BetCreated               */
   /******************************************/
-
+/*
 export function handleBetCreated(event: BetCreated): void {
 
   // Bet Entity
@@ -142,7 +138,7 @@ export function handleBetCreated(event: BetCreated): void {
   /******************************************/
   /*               BetJoined                */
   /******************************************/
-
+/*
 export function handleBetJoined(event: BetJoined): void {
 
   // Bet Entity
@@ -189,7 +185,7 @@ export function handleBetJoined(event: BetJoined): void {
   /******************************************/
   /*               BetClosed                */
   /******************************************/
-
+/*
 export function handleBetClosed(event: BetClosed): void {
 
   // Bet Entity
@@ -201,7 +197,7 @@ export function handleBetClosed(event: BetClosed): void {
   /******************************************/
   /*               BetFinished              */
   /******************************************/
-
+/*
 export function handleBetFinished(event: BetFinished): void {
 
   // Bet Entity
@@ -221,7 +217,7 @@ export function handleBetFinished(event: BetFinished): void {
   /******************************************/
   /*               BetRedeemed              */
   /******************************************/
-
+/*
 export function handleBetRedeemed(event: BetRedeemed): void {
 
   // Bet Entity
@@ -260,7 +256,7 @@ export function handleBetRedeemed(event: BetRedeemed): void {
   /******************************************/
   /*               BetBailout               */
   /******************************************/
-
+/*
 export function handleBetBailout(event: BetBailout): void {
 
   // UserBet Entity
@@ -282,7 +278,7 @@ export function handleBetBailout(event: BetBailout): void {
   /******************************************/
   /*               BetProved                */
   /******************************************/
-  
+  /*
 export function handleBetProved(event: BetProved): void {
   let bet = Bet.load(event.params.betID.toHex())
   bet.proofLink = event.params.proofLink
@@ -301,7 +297,7 @@ export function handleBetProved(event: BetProved): void {
   /******************************************/
 
 export function handleTaskAdded(event: TaskAdded): void {
-  
+  /*
   // Task Entity
   let task = new Task(event.params.taskID.toHex())
   log.info('New Task entity created: {}', [event.params.taskID.toHex()])
@@ -325,7 +321,7 @@ export function handleTaskAdded(event: TaskAdded): void {
   userTask.userStake = event.params.amount
   userTask.taskData = event.params.taskID.toHex()
   userTask.save()
-
+*/
   // UserAchievements Entity
   let userAchievementsId = event.params.initiator.toHex()
   let userAchievements = UserAchievements.load(userAchievementsId)
@@ -335,7 +331,7 @@ export function handleTaskAdded(event: TaskAdded): void {
   }
   userAchievements.tasksCreated = userAchievements.tasksCreated.plus(BigInt.fromI32(1))
   userAchievements.save()                                                                   //hier
-
+/*
   // GlobalStats Entity
   let globalStatsId = "1"
   let globalStats = GlobalStats.load(globalStatsId)
@@ -349,7 +345,7 @@ export function handleTaskAdded(event: TaskAdded): void {
   /******************************************/
   /*               TaskJoined               */
   /******************************************/
-
+/*
 export function handleTaskJoined(event: TaskJoined): void {
   
   // Task Entity
@@ -390,7 +386,7 @@ export function handleTaskJoined(event: TaskJoined): void {
   /******************************************/
   /*                 Voted                  */
   /******************************************/
-
+/*
 export function handleVoted(event: Voted): void {
   
   // Task Entity
@@ -437,7 +433,7 @@ export function handleVoted(event: Voted): void {
   /******************************************/
   /*              UserRedeemed              */
   /******************************************/
-
+/*
 export function handleUserRedeemed(event: UserRedeemed): void {
 
   // UserTask Entity
@@ -459,7 +455,7 @@ export function handleUserRedeemed(event: UserRedeemed): void {
   /******************************************/
   /*            RecipientRedeemed           */
   /******************************************/
-
+/*
 export function handleRecipientRedeemed(event: RecipientRedeemed): void {
 
   // Task Entity
@@ -495,7 +491,7 @@ export function handleRecipientRedeemed(event: RecipientRedeemed): void {
   /******************************************/
   /*              TaskProved                */
   /******************************************/
-
+/*
 export function handleTaskProved(event: TaskProved): void {
 
   // Task Entity
@@ -507,7 +503,7 @@ export function handleTaskProved(event: TaskProved): void {
   /******************************************/
   /*             NameRegistered             */
   /******************************************/
-
+/*
 export function handleNameRegistered(event: NameRegistered): void {
 
   //  UserDashStats Entity
@@ -524,7 +520,7 @@ export function handleNameRegistered(event: NameRegistered): void {
   /******************************************/
   /*            SocialRegistered            */
   /******************************************/
-
+/*
 export function handleSocialRegistered(event: SocialRegistered): void {
 
   // UserDashStats Entity
@@ -550,7 +546,7 @@ export function handleSocialRegistered(event: SocialRegistered): void {
   /******************************************/
   /*            UserBlacklisted             */
   /******************************************/
-
+/*
 export function handleUserBlacklisted(event: UserBlacklisted): void {
 
   // UserDashStats Entity
@@ -567,7 +563,7 @@ export function handleUserBlacklisted(event: UserBlacklisted): void {
   /******************************************/
   /*       DisplayAchievementChanged        */
   /******************************************/
-
+/*
 export function handleDisplayAchievementChanged(event: DisplayAchievementChanged): void {
   
   // UserDashStats Entity
