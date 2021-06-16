@@ -98,7 +98,7 @@ type UserAchievements @entity {
   tasksCreated: BigInt
   tasksJoined: BigInt
   tasksVoted: BigInt
-  betsCreated: BigInt
+  betsCreated: BigInt!
   betsJoined: BigInt
   betsFinished: BigInt
   accountCreation: BigInt
@@ -110,7 +110,7 @@ type UserAchievements @entity {
 type GlobalStats @entity {
   id: ID!
   taskProfits: BigInt
-  users: BigInt
+  users: BigInt!
   taskCount: BigInt
   betProfit: BigInt
   betCount: BigInt
