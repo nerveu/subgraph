@@ -22,6 +22,7 @@ import {
 import { 
   Task, 
   UserTask,
+  UserTask2,
   Bet,
   UserBet,
   UserFavStats,
