@@ -61,7 +61,7 @@ export function handleBetCreated(event: BetCreated): void {
   userBet.save()
 
   // UserAchievements Entity
-  let userAchievementsId = event.params.betID.toHex()                                               //hier
+  let userAchievementsId = event.params.userAchievementsID.toHex()                                               //hier
   let userAchievements = UserAchievements.load(userAchievementsId)
   log.debug('Trying to load userAchievements with ID: {} | {}', [userAchievementsId, event.params.initiator.toHex()])
   if(userAchievements == null) {
